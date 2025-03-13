@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>{{ book.title }}</title>
+{% endblock %}
+{% block content %}
+  <h1>{{ book.title }}</h1>
+
+  <h2>{{ book.author }}</h2>
+  <p>{{ book.summary }}</p>
+
+  <ul>
+    {% for g in book.genre.all %}
+      <li>{{ g }}</li>
+    {% endfor %}
+  </ul>
+
+  <ul>
+    {% for copy in book.bookinstance_set.all %}
+      <li>{{ copy.book.title }}</li>
+      <li>{{ copy.imprint }}</li>
+      <li>{{ copy.due_back }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
